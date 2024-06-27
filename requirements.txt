@@ -1,5 +1,6 @@
 streamlit==1.36.0
 matplotlib
 pandas
+scipy
 numpy
 # Add any other dependencies here

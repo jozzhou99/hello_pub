@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AB Testing Demo</title>
+    <style>
+        #progress {
+            width: 100%;
+            background-color: #f3f3f3;
+        }
+        #progress-bar {
+            width: 0;
+            height: 30px;
+            background-color: #4caf50;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Step 5: Testing and Getting P-value</h1>
+    <div id="progress">
+        <div id="progress-bar">0%</div>
+    </div>
+    <script>
+        let progress = 0;
+        const progressBar = document.getElementById('progress-bar');
+        const interval = setInterval(() => {
+            progress += 2;
+            progressBar.style.width = progress + '%';
+            progressBar.textContent = progress + '%';
+            if (progress >= 100) {
+                clearInterval(interval);
+                fetch('/run-test', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: new URLSearchParams({
+                        multipleTesting: '<%= multipleTesting %>',
+                        fdr: '<%= fdr %>'
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('result').textContent = `Test Statistic: ${data.testStatistic}, P-Value: ${data.pValue}, Significant: ${data.significant}`;
+                });
+            }
+        }, 100);
+    </script>
+    <div id="result"></div>
+</body>
+</html>

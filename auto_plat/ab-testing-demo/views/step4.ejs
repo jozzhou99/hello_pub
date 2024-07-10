@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AB Testing Demo</title>
+</head>
+<body>
+    <h1>Step 4: Pre-Testing Procedures</h1>
+    <p>Outlier Removal and Variance Reduction Applied</p>
+    <p>Variance Before: Group 1: 2.2313, Group 2: 1.9982</p>
+    <p>Variance After: Group 1: 0.812837, Group 2: 0.77671</p>
+    <form action="/run-test" method="post">
+        <label for="multipleTesting">Multiple Testing Correction:</label>
+        <input type="checkbox" name="multipleTesting" id="multipleTesting">
+        <br>
+        <label for="fdr">Enter Desired FDR:</label>
+        <input type="text" name="fdr" id="fdr">
+        <button type="submit">Run Test</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AB Testing Demo</title>
+</head>
+<body>
+    <h1>Step 3: Data Validation</h1>
+    <p>Metric Type: <%= metricType %></p>
+    <p>Test Initialized: 
+        <% if (metricType === 'continuous') { %>
+            Welch's t-test
+        <% } else if (metricType === 'proportional') { %>
+            Chi-square test
+        <% } else if (metricType === 'ratio') { %>
+            Delta method + t-test
+        <% } %>
+    </p>
+    <form action="/validate-data" method="post">
+        <input type="hidden" name="metricType" value="<%= metricType %>">
+        <button type="submit">Check Sample Size Imbalance</button>
+    </form>
+    <% if (validationPassed) { %>
+        <p>Validation passed!</p>
+        <form action="/pre-test" method="post">
+            <button type="submit">Next</button>
+        </form>
+    <% } %>
+</body>
+</html>

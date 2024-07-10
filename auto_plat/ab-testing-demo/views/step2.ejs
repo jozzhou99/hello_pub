@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AB Testing Demo</title>
+</head>
+<body>
+    <h1>Step 2: Automatic Test Type Selection</h1>
+    <p>Data has been loaded.</p>
+    <form action="/select-metric" method="post">
+        <label for="metricType">Select Metric Type:</label>
+        <select name="metricType" id="metricType">
+            <option value="continuous">Continuous</option>
+            <option value="proportional">Proportional</option>
+            <option value="ratio">Ratio</option>
+        </select>
+        <button type="submit">Next</button>
+    </form>
+</body>
+</html>

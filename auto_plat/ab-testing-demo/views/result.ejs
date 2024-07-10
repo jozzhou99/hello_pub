@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AB Testing Demo</title>
+</head>
+<body>
+    <h1>Results</h1>
+    <p>Test Statistic: <%= testStatistic %></p>
+    <p>P-Value: <%= pValue %></p>
+    <p>Significant: <%= significant ? 'Yes' : 'No' %></p>
+    <p>Multiple Testing Correction Applied: <%= multipleTesting ? 'Yes' : 'No' %></p>
+    <p>Desired FDR: <%= fdr %></p>
+    <h2>Conclusion</h2>
+    <p><%= significant ? 'The test result is statistically significant.' : 'The test result is not statistically significant.' %></p>
+</body>
+</html>
